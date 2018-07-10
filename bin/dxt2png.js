@@ -11,7 +11,7 @@ program
   .option('-o, --output', 'output file name')
 
 program
-  .version('1.0.0')
+  .version('1.0.1')
   .parse(process.argv);
 
 

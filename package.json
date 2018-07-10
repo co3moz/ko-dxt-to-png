@@ -1,10 +1,10 @@
 {
   "name": "ko-dxt-to-png",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Knight Online texture to png converter",
   "main": "lib/dxt2png.js",
   "scripts": {
-    "test": "node test/test"
+    "test": "node test/test_all"
   },
   "bin": {
     "dxt2png": "./bin/dxt2png.js"
