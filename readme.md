@@ -23,3 +23,12 @@ You may change the output with `-o` or `--output`
 ```sh
 dxt2png -o ./test.png file.dxt
 ```
+
+You can convert all files within cwd by using `-d` or `--directory`
+
+```sh
+cd ./some_folder_has_tons_of_dxts
+dxt2png -d
+```
+
+It will only work with cwd, I thought this will be safer, and .pngs wont be replicated if they already exist
