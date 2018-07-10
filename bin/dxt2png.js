@@ -12,7 +12,7 @@ program
   .option('-d, --directory', 'look cwd and convert all .dxt files')
 
 program
-  .version('1.1.0')
+  .version('1.1.1')
   .parse(process.argv);
 
 if (program.directory) {
@@ -42,7 +42,7 @@ if (program.directory) {
 
       }
 
-      console.log(parseInt(i / files.length * 100) + '% | ', await dxt2png(location, output));
+      console.log(parseInt(i / files.length * 100) + '% | ', JSON.stringify(await dxt2png(location, output)));
     }
 
     console.log('I looked every file and I could converted %i of them', i);
@@ -69,4 +69,4 @@ try {
 
 }
 
-dxt2png(location, output).then(x => console.log(x)).catch(x => console.error(x))
+dxt2png(location, output).then(x => console.log(JSON.stringify(x))).catch(x => console.error(x))
