@@ -8,11 +8,11 @@ const fs = require('fs');
 
 program
   .usage('<file>')
-  .option('-o, --output', 'output file name')
+  .option('-o, --output [value]', 'output file name')
   .option('-d, --directory', 'look cwd and convert all .dxt files')
 
 program
-  .version('1.1.1')
+  .version('1.1.2')
   .parse(process.argv);
 
 if (program.directory) {
@@ -30,8 +30,8 @@ if (program.directory) {
       i++;
 
       let location = path.resolve(dirLocation, file);
-      let output = path.resolve(path.dirname(location), path.basename(location, '.dxt') + '.png');
-
+      let output = path.resolve(program.output ? program.output : path.dirname(location), path.basename(location, '.dxt') + '.png');
+  
       try {
         let outCheck = fs.statSync(output);
         if (outCheck) {
