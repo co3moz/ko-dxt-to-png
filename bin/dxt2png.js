@@ -12,7 +12,7 @@ program
   .option('-d, --directory', 'look cwd and convert all .dxt files')
 
 program
-  .version('1.2.0')
+  .version('1.2.1')
   .parse(process.argv);
 
 if (program.directory) {
