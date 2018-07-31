@@ -32,3 +32,17 @@ dxt2png -d
 ```
 
 It will only work with cwd, I thought this will be safer, and .pngs wont be replicated if they already exist
+
+
+Preview
+---------------
+
+> added in 1.3.0
+
+To preview a file simply use `-v` parameter. This will create png file in tmp folder, and open it in picture viewer tool. after 1 second it will wipe the temp file.
+
+```sh
+dxt2png -v file.dxt
+or
+dxt2png file.dxt -v
+```
