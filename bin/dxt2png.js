@@ -13,7 +13,7 @@ program
   .option('-d, --directory', 'look cwd and convert all .dxt files')
 
 program
-  .version('1.3.0')
+  .version('1.3.1')
   .parse(process.argv);
 
 if (program.directory) {
@@ -67,7 +67,10 @@ if (program.view) {
       fs.unlink(x.output, err => {
         if (err) {
           console.log('preview temp file could not removed! ' + x.output);
+          process.exit(1);
         }
+
+        process.exit(0); // for mac os..
       })
     }, 1000);
   }).catch(x => console.error(x))
