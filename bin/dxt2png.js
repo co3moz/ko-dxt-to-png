@@ -1,10 +1,12 @@
 #!/usr/bin/env node
+
 /* eslint-disable no-process-exit, no-empty */
 
 const program = require('commander');
 const dxt2png = require('../lib/dxt2png');
 const path = require('path');
 const fs = require('fs');
+const json = require('../package.json');
 
 program
   .usage('<file>')
@@ -13,7 +15,7 @@ program
   .option('-d, --directory', 'look cwd and convert all .dxt files')
 
 program
-  .version('1.3.1')
+  .version(json.version)
   .parse(process.argv);
 
 if (program.directory) {
