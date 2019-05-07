@@ -5,7 +5,8 @@
   "main": "lib/dxt2png.js",
   "scripts": {
     "test": "node test/test_all",
-    "test-buffer": "node test/test_only_buffer"
+    "test-buffer": "node test/test_only_buffer",
+    "test-encrypted": "node test/test_encrypted"
   },
   "bin": {
     "dxt2png": "./bin/dxt2png.js"
@@ -31,7 +32,7 @@
     "tga": "^1.0.3"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
+    "eslint": "^5.16.0",
     "eslint-plugin-node": "^6.0.1"
   },
   "engines": {
