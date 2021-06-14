@@ -20,7 +20,7 @@ program
 
 if (program.directory) {
   let dirLocation = path.resolve(process.cwd());
-  let files = fs.readdirSync(dirLocation).filter(file => file.endsWith('.dxt'));
+  let files = fs.readdirSync(dirLocation).filter(file => file.toLowerCase().endsWith('.dxt'));
 
   if (files.length == 0) {
     console.log('no .dxt files found!');
