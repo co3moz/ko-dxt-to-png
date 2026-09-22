@@ -26,3 +26,9 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Run buffer tests
+        run: npm test-only-buffer
+
+      - name: Run encyption tests
+        run: npm test/test-encrypted
