@@ -9,7 +9,7 @@
     "test-encrypted": "node test/test_encrypted"
   },
   "bin": {
-    "dxt2png": "./bin/dxt2png.js"
+    "dxt2png": "bin/dxt2png.js"
   },
   "keywords": [
     "knight",
