@@ -28,7 +28,7 @@ jobs:
         run: npm test
 
       - name: Run buffer tests
-        run: npm test-only-buffer
+        run: npm test-buffer
 
       - name: Run encyption tests
-        run: npm test/test-encrypted
+        run: npm test-encrypted
