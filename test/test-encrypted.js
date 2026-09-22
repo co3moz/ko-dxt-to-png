@@ -3,8 +3,8 @@ const path = require('path');
 const assert = require('assert');
 const crypto = require('crypto');
 const { PNG } = require('pngjs');
-const dxt2png = require('../lib/dxt2png');
-const { decryptTextureData, deriveKey, rc4 } = require('../lib/decryption');
+const dxt2png = require('../src');
+const { decryptTextureData, deriveKey, rc4 } = require('../src/decryption');
 
 const expectedPixelHashes = {
   'encrypted.itemicon_8_9024_00_0.dxt': '568edbdaa25482d8648ef8ea3b992870df994692db9a21f90fbea8daf1b431ad',

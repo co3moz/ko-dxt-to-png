@@ -2,8 +2,8 @@
 
 /* eslint-disable no-process-exit, no-empty */
 
-const program = require('commander');
-const dxt2png = require('../lib/dxt2png');
+const { program } = require('commander');
+const dxt2png = require('./dxt2png');
 const path = require('path');
 const fs = require('fs');
 const json = require('../package.json');
@@ -18,7 +18,9 @@ program
   .version(json.version)
   .parse(process.argv);
 
-if (program.directory) {
+const options = program.opts();
+
+if (options.directory) {
   let dirLocation = path.resolve(process.cwd());
   let files = fs.readdirSync(dirLocation).filter(file => file.endsWith('.dxt'));
 
@@ -33,7 +35,7 @@ if (program.directory) {
       i++;
 
       let location = path.resolve(dirLocation, file);
-      let output = path.resolve(program.output ? program.output : path.dirname(location), path.basename(location, '.dxt') + '.png');
+      let output = path.resolve(options.output ? options.output : path.dirname(location), path.basename(location, '.dxt') + '.png');
 
       try {
         let outCheck = fs.statSync(output);
@@ -59,7 +61,7 @@ if (!program.args.length) return program.help();
 let arg = program.args[0];
 let location = path.resolve(arg);
 
-if (program.view) {
+if (options.view) {
   dxt2png(location).then(x => {
     const opn = require('opn');
     console.log(JSON.stringify({ name: x.name, format: x.format, width: x.width, height: x.height }));
@@ -78,8 +80,8 @@ if (program.view) {
   }).catch(x => console.error(x))
 } else {
   let output = path.resolve(path.dirname(location), path.basename(location, '.dxt') + '.png');
-  if (program.output) {
-    output = path.resolve(program.output);
+  if (options.output) {
+    output = path.resolve(options.output);
   }
   try {
     let outCheck = fs.statSync(output);

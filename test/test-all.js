@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const dxt2png = require('../lib/dxt2png');
+const dxt2png = require('../src');
 
 (async () => {
   let files = await new Promise((resolve, reject) => fs.readdir(__dirname, (err, files) => err ? reject(err) : resolve(files)));
