@@ -27,13 +27,9 @@
     "commander": "^2.15.1",
     "dxt-js": "0.0.3",
     "long": "^4.0.0",
-    "node-png": "^0.4.3",
     "opn": "^5.3.0",
+    "pngjs": "^7.0.0",
     "tga": "^1.0.3"
-  },
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-node": "^6.0.1"
   },
   "engines": {
     "node": ">=10.4.0"

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
 const crypto = require('crypto');
-const { PNG } = require('node-png');
+const { PNG } = require('pngjs');
 const dxt2png = require('../lib/dxt2png');
 const { decryptTextureData, deriveKey, rc4 } = require('../lib/decryption');
 

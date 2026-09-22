@@ -1,22 +1,20 @@
-Knight Online DXT2PNG Converter
-==============================
+# Knight Online DXT2PNG Converter
+
 This application will transform your texture files (.dxt) to modern png files.
 
 ![](doc/a1r5g5b5.png)
 
-Install
-----------------
-* install node.js
-* type in terminal `npm i ko-dxt-to-png -g`
+## Install
 
-Usage
------------------
-* type in terminal `dxt2png file.dxt`
-* there will be `file.png`
+- install node.js
+- type in terminal `npm i ko-dxt-to-png -g`
 
+## Usage
 
-Tips
-----------------
+- type in terminal `dxt2png file.dxt`
+- there will be `file.png`
+
+## Tips
 
 You may change the output with `-o` or `--output`
 
@@ -33,9 +31,7 @@ dxt2png -d
 
 It will only work with cwd, I thought this will be safer, and .pngs wont be replicated if they already exist
 
-
-Preview
----------------
+## Preview
 
 > added in 1.3.0
 
