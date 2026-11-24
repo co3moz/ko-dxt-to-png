@@ -3,16 +3,17 @@
 /* eslint-disable no-process-exit, no-empty */
 
 const { program } = require('commander');
-const dxt2png = require('./dxt2png');
+const dxtToPNG = require('.');
 const path = require('path');
 const fs = require('fs');
 const json = require('../package.json');
 
 program
-  .usage('<file>')
+  .argument('[file]', 'input .dxt file')
   .option('-o, --output [value]', 'output file name')
   .option('-v, --view', 'preview file in browser')
   .option('-d, --directory', 'look cwd and convert all .dxt files')
+
 
 program
   .version(json.version)
@@ -47,7 +48,7 @@ if (options.directory) {
 
       }
 
-      console.log(parseInt(i / files.length * 100) + '% | ', JSON.stringify(await dxt2png(location, output)));
+      console.log(parseInt(i / files.length * 100) + '% | ', JSON.stringify(await dxtToPNG(location, output)));
     }
 
     console.log('I looked every file and I could converted %i of them', i);
@@ -62,7 +63,7 @@ let arg = program.args[0];
 let location = path.resolve(arg);
 
 if (options.view) {
-  dxt2png(location).then(x => {
+  dxtToPNG(location).then(x => {
     const opn = require('opn');
     console.log(JSON.stringify({ name: x.name, format: x.format, width: x.width, height: x.height }));
     opn(x.output);
@@ -93,5 +94,5 @@ if (options.view) {
 
   }
 
-  dxt2png(location, output).then(x => console.log(JSON.stringify(x))).catch(x => console.error(x))
+  dxtToPNG(location, output).then(x => console.log(JSON.stringify(x))).catch(x => console.error(x))
 }

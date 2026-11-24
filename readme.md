@@ -1,4 +1,4 @@
-# Knight Online DXT2PNG Converter
+# Knight Online DXT to PNG Converter
 
 This application will transform your texture files (.dxt) to modern png files.
 
@@ -11,7 +11,7 @@ This application will transform your texture files (.dxt) to modern png files.
 
 ## Usage
 
-- type in terminal `dxt2png file.dxt`
+- type in terminal `ko-dxt-to-png file.dxt`
 - there will be `file.png`
 
 ## Tips
@@ -19,14 +19,14 @@ This application will transform your texture files (.dxt) to modern png files.
 You may change the output with `-o` or `--output`
 
 ```sh
-dxt2png -o ./test.png file.dxt
+ko-dxt-to-png -o ./test.png file.dxt
 ```
 
 You can convert all .dxt files in cwd by using `-d` or `--directory`
 
 ```sh
 cd ./some_folder_has_tons_of_dxts
-dxt2png -d
+ko-dxt-to-png -d
 ```
 
 It will only work with cwd, I thought this will be safer, and .pngs wont be replicated if they already exist
@@ -38,7 +38,7 @@ It will only work with cwd, I thought this will be safer, and .pngs wont be repl
 To preview a file simply use `-v` parameter. This will create png file in tmp folder, and open it in picture viewer tool. after 1 second it will wipe the temp file.
 
 ```sh
-dxt2png -v file.dxt
+ko-dxt-to-png -v file.dxt
 or
-dxt2png file.dxt -v
+ko-dxt-to-png file.dxt -v
 ```

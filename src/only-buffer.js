@@ -2,7 +2,7 @@ const dxt = require('dxt-js');
 const { PNG } = require('pngjs');
 const { decryptTextureData } = require('./decryption');
 
-module.exports = function bufferDxt2Png(buffer) {
+module.exports = function bufferDXTToPNG(buffer) {
   return new Promise((resolve, reject) => {
     let offset = 0;
     let nameLength = buffer.readInt32LE(offset);

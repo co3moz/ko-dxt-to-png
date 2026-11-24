@@ -3,7 +3,7 @@ const path = require('path');
 const assert = require('assert');
 const crypto = require('crypto');
 const { PNG } = require('pngjs');
-const dxt2png = require('../src');
+const dxtToPNG = require('../src');
 const { decryptTextureData, deriveKey, rc4 } = require('../src/decryption');
 
 const expectedPixelHashes = {
@@ -40,7 +40,7 @@ function readPng(file) {
     if (!file.startsWith('encrypted.')) continue;
     if (!file.endsWith('.dxt')) continue;
     const output = path.resolve(__dirname, './results/', path.basename(file, '.dxt') + '.png');
-    console.log(await dxt2png(path.resolve(__dirname, file), output));
+    console.log(await dxtToPNG(path.resolve(__dirname, file), output));
 
     const png = await readPng(output);
     const pixelHash = crypto.createHash('sha256').update(png.data).digest('hex');

@@ -7,7 +7,7 @@ const { decryptTextureData } = require('./decryption');
 const TGA = require('tga');
 const tgaSignature = 'TRUEVISION-XFILE.';
 
-module.exports = function dxt2png(file, outputLocation) {
+module.exports = function dxtToPng(file, outputLocation) {
   return new Promise((resolve, reject) => {
     fs.readFile(file, (err, buffer) => {
       if (err) return reject(err);
