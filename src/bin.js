@@ -3,7 +3,7 @@
 /* eslint-disable no-process-exit, no-empty */
 
 const { program } = require('commander');
-const dxtToPNG = require('.');
+const dxtToPNG = require('./index.cjs');
 const path = require('path');
 const fs = require('fs');
 const json = require('../package.json');
@@ -11,7 +11,6 @@ const json = require('../package.json');
 program
   .argument('[file]', 'input .dxt file')
   .option('-o, --output [value]', 'output file name')
-  .option('-v, --view', 'preview file in browser')
   .option('-d, --directory', 'look cwd and convert all .dxt files')
 
 
@@ -62,37 +61,19 @@ if (!program.args.length) return program.help();
 let arg = program.args[0];
 let location = path.resolve(arg);
 
-if (options.view) {
-  dxtToPNG(location).then(x => {
-    const opn = require('opn');
-    console.log(JSON.stringify({ name: x.name, format: x.format, width: x.width, height: x.height }));
-    opn(x.output);
-
-    setTimeout(() => {
-      fs.unlink(x.output, err => {
-        if (err) {
-          console.log('preview temp file could not removed! ' + x.output);
-          process.exit(1);
-        }
-
-        process.exit(0); // for mac os..
-      })
-    }, 1000);
-  }).catch(x => console.error(x))
-} else {
-  let output = path.resolve(path.dirname(location), path.basename(location, '.dxt') + '.png');
-  if (options.output) {
-    output = path.resolve(options.output);
-  }
-  try {
-    let outCheck = fs.statSync(output);
-    if (outCheck) {
-      console.error('output file is already existed ' + output)
-      process.exit(1);
-    }
-  } catch (e) {
-
-  }
-
-  dxtToPNG(location, output).then(x => console.log(JSON.stringify(x))).catch(x => console.error(x))
+let output = path.resolve(path.dirname(location), path.basename(location, '.dxt') + '.png');
+if (options.output) {
+  output = path.resolve(options.output);
 }
+
+try {
+  let outCheck = fs.statSync(output);
+  if (outCheck) {
+    console.error('output file is already existed ' + output)
+    process.exit(1);
+  }
+} catch (e) {
+
+}
+
+dxtToPNG(location, output).then(x => console.log(JSON.stringify(x))).catch(x => console.error(x))

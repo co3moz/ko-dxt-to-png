@@ -1,12 +1,10 @@
 {
   "name": "ko-dxt-to-png",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Knight Online texture to png converter",
-  "main": "src/index.js",
+  "main": "src/index.cjs",
   "scripts": {
-    "test": "node test/test-all",
-    "test-buffer": "node test/test-only-buffer",
-    "test-encrypted": "node test/test-encrypted"
+    "test": "node test/test.cjs"
   },
   "bin": "src/bin.js",
   "keywords": [
@@ -24,7 +22,6 @@
   "dependencies": {
     "commander": "^15.0.0",
     "dxt-js": "0.0.3",
-    "opn": "^6.0.0",
     "pngjs": "^7.0.0",
     "tga": "^1.0.3"
   },

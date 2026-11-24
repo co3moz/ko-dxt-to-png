@@ -30,15 +30,3 @@ ko-dxt-to-png -d
 ```
 
 It will only work with cwd, I thought this will be safer, and .pngs wont be replicated if they already exist
-
-## Preview
-
-> added in 1.3.0
-
-To preview a file simply use `-v` parameter. This will create png file in tmp folder, and open it in picture viewer tool. after 1 second it will wipe the temp file.
-
-```sh
-ko-dxt-to-png -v file.dxt
-or
-ko-dxt-to-png file.dxt -v
-```

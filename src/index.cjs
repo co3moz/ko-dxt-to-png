@@ -2,7 +2,7 @@ const dxt = require('dxt-js');
 const fs = require('fs');
 const path = require('path');
 const { PNG } = require('pngjs');
-const { decryptTextureData } = require('./decryption');
+const { decryptTextureData } = require('./decryption.cjs');
 
 const TGA = require('tga');
 const tgaSignature = 'TRUEVISION-XFILE.';
@@ -12,7 +12,7 @@ module.exports = function dxtToPng(file, outputLocation) {
     fs.readFile(file, (err, buffer) => {
       if (err) return reject(err);
 
-      if (buffer.slice(buffer.length - tgaSignature.length - 1, buffer.length - 1).toString() == tgaSignature) {
+      if (buffer.subarray(buffer.length - tgaSignature.length - 1, buffer.length - 1).toString() == tgaSignature) {
         let tga = new TGA(buffer);
 
         let png = new PNG({
@@ -38,7 +38,7 @@ module.exports = function dxtToPng(file, outputLocation) {
 
       if (nameLength > 200) return reject(new Error('name cannot be longer than 200, probably this file is invalid, len: ' + nameLength))
 
-      let name = buffer.slice(offset, offset + nameLength).toString();
+      let name = buffer.subarray(offset, offset + nameLength).toString();
       offset += nameLength;
 
 
@@ -54,10 +54,10 @@ module.exports = function dxtToPng(file, outputLocation) {
 
       if (width > 8192 || height > 8192) return reject(new Error('this game is too old, cannot have this much texture width: ' + width + ', height: ' + height));
 
-      let typeData = buffer.slice(offset, offset + 8);
+      let typeData = buffer.subarray(offset, offset + 8);
       offset += 8;
 
-      let crop = buffer.slice(offset);
+      let crop = buffer.subarray(offset);
       let format = 'unknown';
       const d3dFormat = typeData.readUInt32LE(0);
       try {
