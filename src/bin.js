@@ -13,7 +13,6 @@ program
   .option('-o, --output [value]', 'output file name')
   .option('-d, --directory', 'look cwd and convert all .dxt files')
 
-
 program
   .version(json.version)
   .parse(process.argv);
@@ -22,7 +21,7 @@ const options = program.opts();
 
 if (options.directory) {
   let dirLocation = path.resolve(process.cwd());
-  let files = fs.readdirSync(dirLocation).filter(file => file.endsWith('.dxt'));
+  let files = fs.readdirSync(dirLocation).filter(file => file.toLowerCase().endsWith('.dxt'));
 
   if (files.length == 0) {
     console.log('no .dxt files found!');
@@ -35,7 +34,7 @@ if (options.directory) {
       i++;
 
       let location = path.resolve(dirLocation, file);
-      let output = path.resolve(options.output ? options.output : path.dirname(location), path.basename(location, '.dxt') + '.png');
+      let output = path.resolve(options.output ? options.output : path.dirname(location), path.basename(location, path.extname(location)) + '.png');
 
       try {
         let outCheck = fs.statSync(output);
